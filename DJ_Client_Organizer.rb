@@ -1,51 +1,50 @@
-movies = {
-  Memento: 3,
-  Primer: 4,
-  Ishtar: 1
+dj_clients = {
+  Jillian_DeBrosse: 2015_10_10,
+  Cara_Curtis, 2015_08_15,
 }
 
 puts "What would you like to do?"
-puts "-- Type 'add' to add a movie."
-puts "-- Type 'update' to update a movie."
-puts "-- Type 'display' to display all movies."
-puts "-- Type 'delete' to delete a movie."
+puts "-- Type 'add' to add a DJ client."
+puts "-- Type 'update' to update a client date."
+puts "-- Type 'display' to display all DJ clients."
+puts "-- Type 'delete' to delete a client."
 
 choice = gets.chomp.downcase
 case choice
 when 'add'
-  puts "What movie do you want to add?"
-  title = gets.chomp
-  if movies[title.to_sym].nil?
-    puts "What's the rating? (Type a number 0 to 4.)"
-    rating = gets.chomp
-    movies[title.to_sym] = rating.to_i
-    puts "#{title} has been added with a rating of #{rating}."
+  puts "What client do you want to add?"
+  client = gets.chomp
+  if dj_clients[client.to_sym].nil?
+    puts "What's the date? (Enter yyyy_mm_dd)"
+    date = gets.chomp
+    dj_clients[client.to_sym] = date.to_i
+    puts "#{client} has been added with a date of #{date}."
   else
-    puts "That movie already exists! Its rating is #{movies[title.to_sym]}."
+    puts "That client already exists! Its date is #{dj_clients[client.to_sym]}."
   end
 when 'update'
-  puts "What movie do you want to update?"
-  title = gets.chomp
-  if movies[title.to_sym].nil?
-    puts "Movie not found!"
+  puts "What client do you want to update?"
+  client = gets.chomp
+  if dj_clients[client.to_sym].nil?
+    puts "Client not found!"
   else
-    puts "What's the new rating? (Type a number 0 to 4.)"
-    rating = gets.chomp
-    movies[title.to_sym] = rating.to_i
-    puts "#{title} has been updated with new rating of #{rating}."
+    puts "What's the new date? (Enter yyyy_mm_dd)"
+    date = gets.chomp
+    dj_clients[client.to_sym] = date.to_i
+    puts "#{client} has been updated with new date of #{date}."
   end
 when 'display'
-  movies.each do |movie, rating|
-    puts "#{movie}: #{rating}"
+  dj_clients.each do |client, date|
+    puts "#{client}: #{date}"
   end
 when 'delete'
-  puts "What movie do you want to delete?"
-  title = gets.chomp
-  if movies[title.to_sym].nil?
-    puts "Movie not found!"
+  puts "What client do you want to delete?"
+  client = gets.chomp
+  if dj_clients[client.to_sym].nil?
+    puts "Client not found!"
   else
-    movies.delete(title.to_sym)
-    puts "#{title} has been removed."
+    dj_clients.delete(client.to_sym)
+    puts "#{client} has been removed."
   end
 else
   puts "Sorry, I didn't understand you."
